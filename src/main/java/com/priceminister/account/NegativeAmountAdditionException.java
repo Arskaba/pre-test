@@ -3,7 +3,7 @@ package com.priceminister.account;
 
 public class NegativeAmountAdditionException extends Exception {
 
-    private static final long serialVersionUID = -9204191749972551939L;
+    private static final long serialVersionUID = -8782534707326023999L;
 
 	private Double amount;
 
@@ -12,6 +12,6 @@ public class NegativeAmountAdditionException extends Exception {
     }
     
     public String toString() {
-        return "Illegal amount tried to be adde to the account: " + amount;
+        return "Illegal amount tried to be added to the account: " + amount;
     }
 }

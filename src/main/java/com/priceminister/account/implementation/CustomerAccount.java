@@ -12,25 +12,28 @@ public class CustomerAccount implements Account {
     }
 
     public Double getBalance() {
-        if(balance == null){
+        if (balance == null) {
             setBalance(0.0);
         }
         return balance;
     }
 
-    public void add(Double addedAmount) throws NegativeAmountAdditionException{
+    public void add(Double addedAmount) throws NegativeAmountAdditionException {
+        if (addedAmount <= 0) {
+            throw new NegativeAmountAdditionException(addedAmount);
+        }
         double totalAmount = getBalance() + addedAmount;
         setBalance(totalAmount);
     }
 
-    public Double withdrawAndReportBalance(Double withdrawnAmount, AccountRule rule) 
-    		throws IllegalBalanceException {
-            double amountAfterWithdraw = getBalance() - withdrawnAmount;
-            if(!rule.withdrawPermitted(amountAfterWithdraw)){
-                throw new IllegalBalanceException(amountAfterWithdraw);
-            }
-            setBalance(amountAfterWithdraw);
-            return amountAfterWithdraw;
+    public Double withdrawAndReportBalance(Double withdrawnAmount, AccountRule rule)
+            throws IllegalBalanceException {
+        double amountAfterWithdraw = getBalance() - withdrawnAmount;
+        if (!rule.withdrawPermitted(amountAfterWithdraw)) {
+            throw new IllegalBalanceException(amountAfterWithdraw);
+        }
+        setBalance(amountAfterWithdraw);
+        return amountAfterWithdraw;
     }
 
 }
