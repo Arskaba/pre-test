@@ -4,6 +4,7 @@ package com.priceminister.account;
 import static org.junit.Assert.*;
 
 import org.junit.*;
+import org.junit.rules.ExpectedException;
 
 import com.priceminister.account.implementation.*;
 
@@ -36,7 +37,7 @@ public class CustomerAccountTest {
      */
     @Test
     public void testAccountWithoutMoneyHasZeroBalance() {
-        fail("not yet implemented");
+        assertEquals(0, (double) customerAccount.getBalance(), 0.0);
     }
     
     /**
@@ -44,16 +45,17 @@ public class CustomerAccountTest {
      */
     @Test
     public void testAddPositiveAmount() {
-        fail("not yet implemented");
+        customerAccount.add(10.0);
+        assertEquals(10.0, customerAccount.getBalance(), 0.0);
     }
     
     /**
      * Tests that an illegal withdrawal throws the expected exception.
      * Use the logic contained in CustomerAccountRule; feel free to refactor the existing code.
      */
-    @Test
-    public void testWithdrawAndReportBalanceIllegalBalance() {
-        fail("not yet implemented");
+    @Test(expected = IllegalBalanceException.class)
+    public void testWithdrawAndReportBalanceIllegalBalance() throws IllegalBalanceException {
+        customerAccount.withdrawAndReportBalance(15.0, rule);
     }
     
     // Also implement missing unit tests for the above functionalities.
