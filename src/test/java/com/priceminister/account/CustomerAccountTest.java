@@ -1,12 +1,13 @@
 package com.priceminister.account;
 
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
-import org.junit.*;
-import org.junit.rules.ExpectedException;
+import org.junit.Before;
+import org.junit.Test;
 
-import com.priceminister.account.implementation.*;
+import com.priceminister.account.implementation.CustomerAccount;
+import com.priceminister.account.implementation.CustomerAccountRule;
 
 
 /**

@@ -1,6 +1,9 @@
 package com.priceminister.account.implementation;
 
-import com.priceminister.account.*;
+import com.priceminister.account.Account;
+import com.priceminister.account.AccountRule;
+import com.priceminister.account.IllegalBalanceException;
+import com.priceminister.account.NegativeAmountAdditionException;
 
 
 public class CustomerAccount implements Account {
