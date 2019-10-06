@@ -21,8 +21,8 @@ import com.priceminister.account.implementation.*;
  */
 public class CustomerAccountTest {
     
-    Account customerAccount;
-    AccountRule rule;
+    private Account customerAccount;
+    private AccountRule rule;
 
     /**
      * @throws java.lang.Exception
@@ -30,6 +30,7 @@ public class CustomerAccountTest {
     @Before
     public void setUp() throws Exception {
         customerAccount = new CustomerAccount();
+        rule = new CustomerAccountRule();
     }
     
     /**
