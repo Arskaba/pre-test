@@ -45,9 +45,19 @@ public class CustomerAccountTest {
      * Adds money to the account and checks that the new balance is as expected.
      */
     @Test
-    public void testAddPositiveAmount() {
+    public void testAddPositiveAmount() throws  NegativeAmountAdditionException{
         customerAccount.add(10.0);
         assertEquals(10.0, customerAccount.getBalance(), 0.0);
+    }
+
+    @Test(expected = NegativeAmountAdditionException.class)
+    public void testAddNegativeAmount() throws NegativeAmountAdditionException{
+        customerAccount.add(-50.0);
+    }
+
+    @Test
+    public void testWithdrawAndReportBalance() throws IllegalBalanceException{
+        assertEquals(5.0, customerAccount.withdrawAndReportBalance(5.0, rule), 0.0);
     }
     
     /**
@@ -59,6 +69,4 @@ public class CustomerAccountTest {
         customerAccount.withdrawAndReportBalance(15.0, rule);
     }
     
-    // Also implement missing unit tests for the above functionalities.
-
 }

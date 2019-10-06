@@ -18,7 +18,7 @@ public class CustomerAccount implements Account {
         return balance;
     }
 
-    public void add(Double addedAmount) {
+    public void add(Double addedAmount) throws NegativeAmountAdditionException{
         double totalAmount = getBalance() + addedAmount;
         setBalance(totalAmount);
     }
