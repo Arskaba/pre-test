@@ -61,7 +61,6 @@ public class CustomerAccountTest {
         customerAccount.add(30.0);
         assertEquals(30.0, customerAccount.getBalance(), 0.0);
         customerAccount.add(-50.0);
-        assertEquals(30.0, customerAccount.getBalance(), 0.0);
     }
 
     /**
@@ -75,6 +74,7 @@ public class CustomerAccountTest {
         customerAccount.add(10.0);
         assertEquals(5.0, customerAccount.withdrawAndReportBalance(5.0, rule), 0.0);
         assertEquals(1.0, customerAccount.withdrawAndReportBalance(4.0, rule), 0.0);
+        assertEquals(0.0, customerAccount.withdrawAndReportBalance(1.0, rule), 0.0);
     }
 
     /**
@@ -86,12 +86,7 @@ public class CustomerAccountTest {
      */
     @Test(expected = IllegalBalanceException.class)
     public void testWithdrawAndReportBalanceIllegalBalance() throws IllegalBalanceException, NegativeAmountAdditionException {
-        customerAccount.add(10.0);
-        assertEquals(10.0, customerAccount.getBalance(), 0.0);
         customerAccount.withdrawAndReportBalance(15.0, rule);
-        assertEquals(10.0, customerAccount.getBalance(), 0.0);
-        customerAccount.withdrawAndReportBalance(10.0, rule);
-        assertEquals(10.0, customerAccount.getBalance(), 0.0);
     }
 
 }
