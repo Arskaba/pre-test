@@ -19,7 +19,7 @@ public class CustomerAccount implements Account {
     }
 
     public void add(Double addedAmount) throws NegativeAmountAdditionException {
-        if (addedAmount <= 0) {
+        if (addedAmount == null || addedAmount <= 0) {
             throw new NegativeAmountAdditionException(addedAmount);
         }
         double totalAmount = getBalance() + addedAmount;
@@ -28,6 +28,9 @@ public class CustomerAccount implements Account {
 
     public Double withdrawAndReportBalance(Double withdrawnAmount, AccountRule rule)
             throws IllegalBalanceException {
+        if(withdrawnAmount == null || rule == null){
+            return 0.0;
+        }
         double amountAfterWithdraw = getBalance() - withdrawnAmount;
         if (!rule.withdrawPermitted(amountAfterWithdraw)) {
             throw new IllegalBalanceException(amountAfterWithdraw);
