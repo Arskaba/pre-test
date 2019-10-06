@@ -58,18 +58,23 @@ public class CustomerAccountTest {
      */
     @Test(expected = NegativeAmountAdditionException.class)
     public void testAddNegativeAmount() throws NegativeAmountAdditionException {
+        customerAccount.add(30.0);
+        assertEquals(30.0, customerAccount.getBalance(), 0.0);
         customerAccount.add(-50.0);
+        assertEquals(30.0, customerAccount.getBalance(), 0.0);
     }
 
     /**
      * withdraw money from the account and give back the amount taken back
      *
      * @throws IllegalBalanceException
+     * @throws NegativeAmountAdditionException
      */
     @Test
     public void testWithdrawAndReportBalance() throws IllegalBalanceException, NegativeAmountAdditionException {
         customerAccount.add(10.0);
         assertEquals(5.0, customerAccount.withdrawAndReportBalance(5.0, rule), 0.0);
+        assertEquals(1.0, customerAccount.withdrawAndReportBalance(4.0, rule), 0.0);
     }
 
     /**
@@ -77,10 +82,16 @@ public class CustomerAccountTest {
      * Use the logic contained in CustomerAccountRule; feel free to refactor the existing code.
      *
      * @throws IllegalBalanceException
+     * @throws NegativeAmountAdditionException
      */
     @Test(expected = IllegalBalanceException.class)
-    public void testWithdrawAndReportBalanceIllegalBalance() throws IllegalBalanceException {
+    public void testWithdrawAndReportBalanceIllegalBalance() throws IllegalBalanceException, NegativeAmountAdditionException {
+        customerAccount.add(10.0);
+        assertEquals(10.0, customerAccount.getBalance(), 0.0);
         customerAccount.withdrawAndReportBalance(15.0, rule);
+        assertEquals(10.0, customerAccount.getBalance(), 0.0);
+        customerAccount.withdrawAndReportBalance(10.0, rule);
+        assertEquals(10.0, customerAccount.getBalance(), 0.0);
     }
 
 }
