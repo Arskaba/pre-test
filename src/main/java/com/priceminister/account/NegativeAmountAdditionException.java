@@ -12,6 +12,6 @@ public class NegativeAmountAdditionException extends Exception {
     }
     
     public String toString() {
-        return "Illegal amount tried to be added to the account: " + amount;
+        return "Illegal amount addition to the account: " + amount;
     }
 }

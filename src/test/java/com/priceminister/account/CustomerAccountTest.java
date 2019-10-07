@@ -53,7 +53,7 @@ public class CustomerAccountTest {
     }
 
     /**
-     * Verify the impossibility to add a negative amount to the account
+     * Tests the impossibility to add a negative amount to the account
      *
      * @throws NegativeAmountAdditionException
      */
@@ -66,7 +66,7 @@ public class CustomerAccountTest {
 
     /**
      *
-     * Verify that the impossibility to add a 0.0 amount ot the account
+     * Tests that the impossibility to add a 0.0 amount ot the account
      *
      * @throws NegativeAmountAdditionException
      */
@@ -76,7 +76,7 @@ public class CustomerAccountTest {
     }
 
     /**
-     *  verify that the function doesn't throw an NPE when adding a null amount
+     *  Tests that the function doesn't throw an NPE when adding a null amount
      * @throws NegativeAmountAdditionException
      */
     @Test(expected = NegativeAmountAdditionException.class)
@@ -112,7 +112,7 @@ public class CustomerAccountTest {
      * @throws NegativeAmountAdditionException
      */
     @Test(expected = IllegalBalanceException.class)
-    public void testWithdrawAndReportBalanceIllegalBalance() throws IllegalBalanceException, NegativeAmountAdditionException {
+    public void testWithdrawAndReportBalanceIllegalBalance() throws IllegalBalanceException{
         customerAccount.withdrawAndReportBalance(15.0, rule);
     }
 

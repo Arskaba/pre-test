@@ -20,6 +20,9 @@ public class CustomerAccountRuleTest {
         rule = new CustomerAccountRule();
     }
 
+    /**
+     * Verification that the correct boolean is returned for the withdrawPermitted function.
+     */
     @Test
     public void testWithdrawPermitted(){
         Assert.assertTrue("the withdraw is permitted",rule.withdrawPermitted(5.0));
